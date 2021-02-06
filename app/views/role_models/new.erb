@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="role_models-index-header">
+    ロールモデルの投稿
+  </div>
+  <%= form_for @role_model, url: :role_models_create do |form| %>
+    <div class="role_models-input-field">
+      <%= form.label :title, 'ロールモデル' %>
+      <%= form.text_field :title %>
+    </div>
+    <div class="role_models-input-field">
+      <%= form.label :description, 'ロールモデルの説明' %>
+      <%= form.text_area :description %>
+    </div>
+    <div class="role_models-input-field">
+      <%= form.label :good_point, 'このロールモデルの良い点' %>
+      <%= form.text_area :good_point %>
+    </div>
+    <div class="role_models-input-field">
+      <%= form.label :bad_point, 'このロールモデルの悪い点' %>
+      <%= form.text_area :bad_point %>
+    </div>
+    <div class="role_models-input-field">
+      <%= form.label :approach, 'このロールモデルを実践するには' %>
+      <%= form.text_area :approach %>
+    </div>
+    <%= form.submit '投稿' %>
+  <% end %>
+</div>
