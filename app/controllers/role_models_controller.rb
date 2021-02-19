@@ -10,7 +10,7 @@ class RoleModelsController < ApplicationController
   def create
     @role_model_record = RoleModelRecord.new(role_model_params.slice(:title, :description, :good_point, :bad_point, :approach))
     if @role_model_record.save
-      @role_model_record.save_tags(role_model_params[:tag].split)
+      @role_model_record.save_tags(role_model_params[:tag].split(','))
     end
   end
 

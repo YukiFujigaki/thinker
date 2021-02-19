@@ -11,7 +11,7 @@ class RoleModelRecord < ApplicationRecord
   end
 
   def save_tags(save_tags)
-    current_tags = self.tags.pluck(:name) if self.tags.present?
+    current_tags = self.tags.pluck(:name) if self.tags
     old_tags = current_tags - save_tags
     new_tags = save_tags - current_tags
 
