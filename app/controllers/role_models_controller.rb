@@ -8,7 +8,10 @@ class RoleModelsController < ApplicationController
   end
 
   def create
-    RoleModelRecord.create(role_model_params)
+    @role_model_record = RoleModelRecord.new(role_model_params.slice(:title, :description, :good_point, :bad_point, :approach))
+    if @role_model_record.save
+      @role_model_record.save_tags(role_model_params[:tag].split(','))
+    end
   end
 
   def show
@@ -27,6 +30,6 @@ class RoleModelsController < ApplicationController
   end
 
   private def role_model_params
-    params.require(:role_model_record).permit(:title, :description, :good_point, :bad_point, :approach)
+    params.permit(:title, :tag, :description, :good_point, :bad_point, :approach)
   end
 end
