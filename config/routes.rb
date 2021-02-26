@@ -10,6 +10,13 @@ Rails.application.routes.draw do
   get '/role_models/edit/:id', to: 'role_models#edit'
   patch '/role_models/update/:id', to: 'role_models#update'
 
+  get '/user_profiles', to: 'user_profiles#index'
+  get '/user_profiles/:id', to: 'user_profiles#show'
+  get '/user_profiles/:id/new', to: 'user_profiles#new'
+  post '/user_profiles/:id/create', to: 'user_profiles#create'
+  get '/user_profiles/:id/edit', to: 'user_profiles#edit'
+  post '/user_profiles/:id/update', to: 'user_profiles#update'
+
   get '/tags/autocomplete_tag/all_tags', to: 'tags#all_tags'
   get '/tags/autocomplete_tag/:tag', to: 'tags#autocomplete_tag'
 end
