@@ -1,28 +1,49 @@
 <div class="container">
-  <div class="role_models-index-header">
-    ロールモデルの編集
+  <div class="form-body">
+    <div class="role_models-index-header">
+      ロールモデルの編集
+    </div>
+    <div class="form-content">
+      <%= form_with(url: "/role_models/#{@role_model.id}/edit", method: :post) do %>
+        <div class="role_models-input-field">
+          <%= label_tag(:title, 'ロールモデル') %>
+          <%= text_field_tag(:title, @role_model.title)%>
+        </div>
+        <div class="role_models-input-field">
+          <%= label_tag(:tag, 'タグ') %>
+          <%= text_field_tag(:tag) %>
+        </div>
+        <div class="role_models-input-field">
+          <%= label_tag(:description, 'ロールモデルの説明') %>
+          <%= text_field_tag(:description, @role_model.description) %>
+        </div>
+        <div class="role_models-input-field">
+          <%= label_tag(:good_point, 'このロールモデルの良い点') %>
+          <%= text_field_tag(:good_point, @role_model.good_point) %>
+        </div>
+        <div class="role_models-input-field">
+          <%= label_tag(:bad_point, 'このロールモデルの悪い点') %>
+          <%= text_field_tag(:bad_point, @role_model.bad_point) %>
+        </div>
+        <div class="role_models-input-field">
+          <%= label_tag(:approach, 'このロールモデルを実践するには') %>
+          <%= text_field_tag(:approach, @role_model.approach) %>
+        </div>
+        <%= submit_tag('投稿') %>
+      <% end %>
+    </div>
   </div>
-  <%= form_for @role_model, url: { controller: 'role_models', action: 'update', id: @role_model.id } do |form| %>
-    <div class="role_models-input-field">
-      <%= form.label :title, 'タイトル' %>
-      <%= form.text_field :title, value: @role_model.title %>
-    </div>
-    <div class="role_models-input-field">
-      <%= form.label :description, '説明' %>
-      <%= form.text_area :description, value: @role_model.description %>
-    </div>
-    <div class="role_models-input-field">
-      <%= form.label :good_point, 'このロールモデルの良い点' %>
-      <%= form.text_area :good_point, value: @role_model.good_point %>
-    </div>
-    <div class="role_models-input-field">
-      <%= form.label :bad_point, 'このロールモデルの悪い点' %>
-      <%= form.text_area :bad_point, value: @role_model.bad_point %>
-    </div>
-    <div class="role_models-input-field">
-      <%= form.label :approach, 'このロールモデルを実践するには' %>
-      <%= form.text_area :approach, value: @role_model.approach %>
-    </div>
-    <%= form.submit '投稿' %>
-  <% end %>
 </div>
+<script>
+  $(document).ready(
+    function() {
+        list = $.ajax({url: '/tags/autocomplete_tag/all_tags', dataType: 'json', type: 'GET'}).done(
+        function(data) {
+          $('#tag').tagit({
+            singleField: true,
+            availableTags: data
+          });
+        });
+    }
+  );
+</script>
