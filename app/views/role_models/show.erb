@@ -2,24 +2,40 @@
   <div class="role_models-index-header">
     ロールモデルの投稿
   </div>
-  <h2>ロールモデル</h2>
-  <div class="role_models-input-field">
-    <%= @role_model.title %>
-  </div>
-  <h2>ロールモデルの説明</h2>
-  <div class="role_models-input-field">
-    <%= @role_model.description %>
-  </div>
-  <h2>このロールモデルの良い点</h2>
-  <div class="role_models-input-field">
-    <%= @role_model.good_point %>
-  </div>
-  <h2>このロールモデルの悪い点</h2>
-  <div class="role_models-input-field">
-    <%= @role_model.bad_point %>
-  </div>
-  <h2>このロールモデルを実践するには</h2>
-  <div class="role_models-input-field">
-    <%= @role_model.approach %>
+  <div class="role_models-body-show">
+    <div class="role_models-background">
+      <img src="<%= "/user_background_images/#{@role_model.user.user_profile.background_image}" %>">
+    </div>
+    <div class="role_models_user-image">
+      <img src="<%= "/user_images/#{@role_model.user.user_profile.image}" %>">
+    </div>
+    <div class="role_models-title-top">
+      <%= @role_model.title %>
+    </div>
+    <%= link_to('編集する', "/role_models/#{@role_model.id}/edit") if @role_model.user.id == @current_user.id %>
+    <div class="role_models-title">
+      どのような生活、行動をしていますか？
+    </div>
+    <div class="role_models-contents">
+      <%= simple_format(@role_model.description) %>
+    </div>
+    <div class="role_models-title">
+      このロールモデルの良い点
+    </div>
+    <div class="role_models-contents">
+      <%= @role_model.good_point %>
+    </div>
+    <div class="role_models-title">
+      このロールモデルの悪い点
+    </div>
+    <div class="role_models-contents">
+      <%= @role_model.bad_point %>
+    </div>
+    <div class="role_models-title">
+      あなたの様になるにはどうしたら良いですか？
+    </div>
+    <div class="role_models-contents">
+      <%= simple_format(@role_model.approach) %>
+    </div>
   </div>
 </div>

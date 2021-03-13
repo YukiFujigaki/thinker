@@ -1,6 +1,7 @@
 class RoleModelRecord < ApplicationRecord
   self.table_name = 'role_models'
 
+  belongs_to :user
   has_many :tag_maps, dependent: :destroy, foreign_key: 'role_model_id'
   has_many :tags, through: :tag_maps
 

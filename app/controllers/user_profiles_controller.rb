@@ -35,14 +35,14 @@ class UserProfilesController < ApplicationController
     @user_plofile.name = user_profile_params[:name]
     @user_plofile.introduction = user_profile_params[:introduction]
     @user_plofile.image = user_profile_image if user_profile_params[:image]
-    @user_plofile.image = user_profile_background_image if user_profile_params[:background_image]
+    @user_plofile.background_image = user_profile_background_image if user_profile_params[:background_image]
 
     if @user_plofile.save
       flash[:notice] = '保存しました。'
       redirect_to("/user_profiles/#{@current_user.id}")
     else
       flash[:notice] = '保存出来ませんでした。もう一度プロフィールを作成して下さい。'
-      redirect_to("/user_profiles/#{@current_user.id}/edit")
+      redirect_to "/role_models/#{@current_user.id}/edit"
     end
   end
 
