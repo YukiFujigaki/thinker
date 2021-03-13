@@ -12,6 +12,7 @@
     <div class="role_models-title-top">
       <%= @role_model.title %>
     </div>
+    <%= link_to('編集する', "/role_models/#{@role_model.id}/edit") if @role_model.user.id == @current_user.id %>
     <div class="role_models-title">
       どのような生活、行動をしていますか？
     </div>
