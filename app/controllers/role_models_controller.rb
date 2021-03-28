@@ -1,6 +1,6 @@
 class RoleModelsController < ApplicationController
   def index
-    @role_models = RoleModelRecord.all_role_models
+    @role_models = RoleModelRecord.all_role_models(params[:page], 10)
   end
 
   def new

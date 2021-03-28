@@ -1,6 +1,6 @@
 class UserProfilesController < ApplicationController
   def index
-    @users = User.all
+    @users = User.all_role_users(params[:page], 10)
   end
 
   def show

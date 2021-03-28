@@ -6,4 +6,10 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable, :omniauthable
 
   has_one :user_profile
+
+  class << self
+    def all_role_users(page, per)
+      self.all.order(created_at: :desc).page(page).per(per)
+    end
+  end
 end
