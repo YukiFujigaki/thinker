@@ -6,8 +6,8 @@ class RoleModelRecord < ApplicationRecord
   has_many :tags, through: :tag_maps
 
   class << self
-    def all_role_models
-      self.all.order(created_at: :desc)
+    def all_role_models(page, per)
+      self.all.order(created_at: :desc).page(page).per(per)
     end
   end
 
